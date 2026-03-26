@@ -10,10 +10,7 @@
         },
         "openrouter/nvidia/nemotron-3-nano-30b-a3b:free": {}
       },
-      "workspace": "${OPENCLAW_HOME}/workspace",
-      "sandbox": {
-        "mode": "all"
-      }
+      "workspace": "${OPENCLAW_HOME}/workspace"
     }
   },
   "tools": {

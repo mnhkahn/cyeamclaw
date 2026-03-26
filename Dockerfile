@@ -19,7 +19,7 @@ RUN chown node:node /app
 RUN apt-get update && apt-get install -y vim
 
 # 2. 插件安装（作为 node 用户以避免后期权限修复带来的镜像膨胀）
-RUN mkdir -p /data/.openclaw/workspace /data/.openclaw/extensions && \
+RUN mkdir -p /data/.openclaw/workspace /data/.openclaw/extensions /data/.openclaw/agents /data/.openclaw/credentials && \
   chown -R node:node /data && \
   chown -R node:node /usr/local/lib/node_modules && \
   chown -R node:node /usr/local/bin
