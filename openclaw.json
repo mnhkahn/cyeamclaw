@@ -1,0 +1,75 @@
+{
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "openrouter/nvidia/nemotron-3-nano-30b-a3b:free"
+      },
+      "models": {
+        "openrouter/auto": {
+          "alias": "OpenRouter"
+        },
+        "openrouter/nvidia/nemotron-3-nano-30b-a3b:free": {}
+      },
+      "workspace": "${OPENCLAW_HOME}/workspace",
+      "sandbox": {
+        "mode": "all"
+      }
+    }
+  },
+  "tools": {
+    "profile": "coding",
+    "web": {
+      "search": {
+        "provider": "brave"
+      }
+    },
+    "deny": [
+      "group:web",
+      "browser"
+    ]
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "channels": {
+    "feishu": {
+      "enabled": true,
+      "appId": "${FEISHU_APP_ID}",
+      "appSecret": "${FEISHU_APP_SECRET}",
+      "connectionMode": "websocket",
+      "domain": "lark",
+      "groupPolicy": "disabled"
+    }
+  },
+  "gateway": {
+    "port": 3000,
+    "mode": "local",
+    "bind": "lan",
+    "controlUi": {
+      "allowedOrigins": [
+        "https://cyeamclaw.fly.dev"
+      ]
+    },
+    "auth": {
+      "mode": "token",
+      "token": "${OPENCLAW_GATEWAY_TOKEN}"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    }
+  },
+  "plugins": {
+    "entries": {
+      "feishu": {
+        "enabled": true
+      }
+    }
+  }
+}
