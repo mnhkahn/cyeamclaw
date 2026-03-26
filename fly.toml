@@ -18,13 +18,13 @@ dockerfile = "Dockerfile"
 [env]
 NODE_ENV = "production"
 OPENCLAW_PREFER_PNPM = "1"
-OPENCLAW_STATE_DIR = "/data"
+OPENCLAW_STATE_DIR = "/data/.openclaw"
 OPENCLAW_HOME = "/data/.openclaw"
 OPENCLAW_CONFIG_PATH = "/data/.openclaw/openclaw.json"
 NODE_OPTIONS = "--max-old-space-size=1536"
 
 [processes]
-app = "node dist/index.js gateway --allow-unconfigured --port 3000 --bind lan"
+app = "bash -c \"echo OPENCLAW_CONFIG_PATH: $OPENCLAW_CONFIG_PATH && cp /app/openclaw.json /data/.openclaw/openclaw.json && cp /app/.env /data/.openclaw/.env && chmod 600 /data/.openclaw/openclaw.json && echo '=== openclaw.json content ===' && cat /data/.openclaw/openclaw.json && openclaw gateway --allow-unconfigured --port 3000 --bind lan\""
 
 # NOTE: No [http_service] block = no public ingress allocated.
 # The gateway will only be accessible via:

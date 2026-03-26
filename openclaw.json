@@ -54,7 +54,8 @@
     "controlUi": {
       "allowedOrigins": [
         "https://cyeamclaw.fly.dev"
-      ]
+      ],
+      "dangerouslyAllowHostHeaderOriginFallback": true
     },
     "auth": {
       "mode": "token",
