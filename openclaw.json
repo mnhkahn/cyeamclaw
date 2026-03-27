@@ -69,5 +69,13 @@
         "enabled": true
       }
     }
+  },
+  "logging": {
+    "level": "trace",
+    "consoleLevel": "trace",
+    "consoleStyle": "pretty",
+    "file": "/tmp/openclaw/openclaw-YYYY-MM-DD.log",
+    "redactSensitive": "tools",
+    "redactPatterns": ["sk-.*"]
   }
 }

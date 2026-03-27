@@ -16,7 +16,22 @@ ENV BUN_INSTALL="/usr/local" \
 
 
 RUN chown node:node /app
-RUN apt-get update && apt-get install -y vim
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    wget \
+    git \
+    ffmpeg \
+    jq \
+    chromium \
+    ca-certificates \
+    fonts-liberation \
+    fonts-noto-cjk \
+    fonts-noto-color-emoji \
+    locales \
+    procps \
+    unzip \
+    vim \
+    && rm -rf /var/lib/apt/lists/*
 
 # 2. 插件安装（作为 node 用户以避免后期权限修复带来的镜像膨胀）
 RUN mkdir -p /data/.openclaw/workspace /data/.openclaw/extensions /data/.openclaw/agents /data/.openclaw/credentials && \
