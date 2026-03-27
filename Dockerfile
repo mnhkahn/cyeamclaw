@@ -41,5 +41,9 @@ RUN chmod 600 /app/openclaw.json && \
 
 USER node
 
-RUN npm install -g openclaw@latest
+RUN npm install -g openclaw@latest && \
+  echo "Installing clawhub..." && \
+  npm install -g @clawhub/cli && \
+  echo "Logging into clawhub..." && \
+  npx clawhub login --no-browser --token $(grep CLAWHUB_TOKEN /app/.env | cut -d '=' -f2)
 
