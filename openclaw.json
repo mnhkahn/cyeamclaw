@@ -2,26 +2,31 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "openrouter/nvidia/nemotron-3-nano-30b-a3b:free"
+        "primary": "openrouter/nvidia/nemotron-3-super-120b-a12b:free"
       },
       "models": {
         "openrouter/auto": {
           "alias": "OpenRouter"
         },
-        "openrouter/nvidia/nemotron-3-nano-30b-a3b:free": {}
+        "openrouter/nvidia/nemotron-3-super-120b-a12b:free": {}
       },
       "workspace": "${OPENCLAW_HOME}/workspace"
     }
   },
   "tools": {
-    "profile": "coding",
     "web": {
       "search": {
-        "provider": "brave"
+        "provider": "gemini"
       }
     },
+    "allow": [
+      "group:automation",
+      "exec",
+      "group:fs",
+      "web_search",
+      "web_fetch"
+    ],
     "deny": [
-      "group:web",
       "browser"
     ]
   },
@@ -71,11 +76,13 @@
     }
   },
   "logging": {
-    "level": "trace",
-    "consoleLevel": "trace",
+    "level": "debug",
+    "consoleLevel": "debug",
     "consoleStyle": "pretty",
-    "file": "/tmp/openclaw/openclaw-YYYY-MM-DD.log",
+    "file": "/data/logs/openclaw-YYYY-MM-DD.log",
     "redactSensitive": "tools",
-    "redactPatterns": ["sk-.*"]
+    "redactPatterns": [
+      "sk-.*"
+    ]
   }
 }

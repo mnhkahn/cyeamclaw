@@ -87,12 +87,12 @@ fly ssh console
 
 ## 主要配置说明
 
-### openclaw\.json
+### openclaw.json
 
-- **agents.defaults.model** - 默认使用的 AI 模型
+- **agents.defaults.model** - 默认使用的 AI 模型（OpenRouter Nemotron）
 - **channels.feishu** - 飞书机器人配置
 - **gateway** - 网关配置（端口、认证等）
-- **tools** - 工具配置（搜索、浏览器等）
+- **logging** - 日志配置（trace 级别、日志文件、敏感信息脱敏）
 
 ### Dockerfile
 

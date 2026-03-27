@@ -12,7 +12,10 @@ ENV BUN_INSTALL="/usr/local" \
   OPENCLAW_STATE_DIR=/data \
   OPENCLAW_HOME=/data/.openclaw \
   OPENCLAW_CONFIG_PATH=/data/.openclaw/openclaw.json \
-  NODE_OPTIONS=--max-old-space-size=1536
+  NODE_OPTIONS=--max-old-space-size=1536 \
+  LANG=zh_CN.UTF-8 \
+  LANGUAGE=zh_CN:zh \
+  LC_ALL=zh_CN.UTF-8
 
 
 RUN chown node:node /app
@@ -31,7 +34,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     procps \
     unzip \
     vim \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && sed -i 's/# zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/' /etc/locale.gen \
+    && locale-gen
 
 # 2. 插件安装（作为 node 用户以避免后期权限修复带来的镜像膨胀）
 RUN mkdir -p /data/.openclaw/workspace /data/.openclaw/extensions /data/.openclaw/agents /data/.openclaw/credentials && \
