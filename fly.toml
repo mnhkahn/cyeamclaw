@@ -22,6 +22,8 @@ OPENCLAW_STATE_DIR = "/data/.openclaw"
 OPENCLAW_HOME = "/data/.openclaw"
 OPENCLAW_CONFIG_PATH = "/data/.openclaw/openclaw.json"
 NODE_OPTIONS = "--max-old-space-size=1536"
+HIMALAYA_CONFIG = "/data/emails/config.toml"
+PATH = "/data/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
 [processes]
 app = "bash -c \"echo OPENCLAW_CONFIG_PATH: $OPENCLAW_CONFIG_PATH && cp /app/openclaw.json /data/.openclaw/openclaw.json && cp /app/.env /data/.openclaw/.env && chmod 600 /data/.openclaw/openclaw.json && echo '=== openclaw.json content ===' && cat /data/.openclaw/openclaw.json && openclaw gateway --allow-unconfigured --verbose --port 3000 --bind lan\""

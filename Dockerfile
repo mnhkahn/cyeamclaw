@@ -5,13 +5,9 @@ WORKDIR /app
 
 # 设置环境变量
 ENV BUN_INSTALL="/usr/local" \
-  PATH="/usr/local/bin:$PATH" \
   DEBIAN_FRONTEND=noninteractive \
   NODE_ENV=production \
   OPENCLAW_PREFER_PNPM=1 \
-  OPENCLAW_STATE_DIR=/data \
-  OPENCLAW_HOME=/data/.openclaw \
-  OPENCLAW_CONFIG_PATH=/data/.openclaw/openclaw.json \
   NODE_OPTIONS=--max-old-space-size=1536 \
   LANG=zh_CN.UTF-8 \
   LANGUAGE=zh_CN:zh \
@@ -62,8 +58,7 @@ RUN chmod 600 /app/openclaw.json && \
 USER node
 
 RUN npm install -g openclaw@latest && \
-  echo "Installing clawhub..." && \
   npm install -g @clawhub/cli && \
-  echo "Logging into clawhub..." && \
+  npm install -g mcporter opencode-ai@latest clawhub playwright playwright-extra && \
   npx clawhub login --no-browser --token $(grep CLAWHUB_TOKEN /app/.env | cut -d '=' -f2)
 
