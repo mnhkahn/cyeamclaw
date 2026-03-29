@@ -11,7 +11,9 @@
                 "openrouter/auto": {
                     "alias": "OpenRouter"
                 },
-                "openrouter/nvidia/nemotron-3-super-120b-a12b:free": {}
+                "openrouter/nvidia/nemotron-3-super-120b-a12b:free": {},
+                "huggingface-infer/Qwen/Qwen-VL-Chat": {},
+                "huggingface-infer/BAAI/bge-small-zh-v1.5": {}
             },
             "workspace": "${OPENCLAW_HOME}/workspace"
         }

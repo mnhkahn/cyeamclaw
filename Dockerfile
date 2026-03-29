@@ -16,31 +16,28 @@ ENV BUN_INSTALL="/usr/local" \
 
 RUN chown node:node /app
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl \
-    wget \
-    git \
-    ffmpeg \
-    jq \
-    chromium \
-    ca-certificates \
-    fonts-liberation \
-    fonts-noto-cjk \
-    fonts-noto-color-emoji \
-    locales \
-    procps \
-    unzip \
-    vim \
-    && rm -rf /var/lib/apt/lists/* \
-    && sed -i 's/# zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/' /etc/locale.gen \
-    && locale-gen
+  curl \
+  wget \
+  git \
+  ffmpeg \
+  jq \
+  chromium \
+  ca-certificates \
+  fonts-liberation \
+  fonts-noto-cjk \
+  fonts-noto-color-emoji \
+  locales \
+  procps \
+  unzip \
+  vim \
+  && rm -rf /var/lib/apt/lists/* \
+  && sed -i 's/# zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/' /etc/locale.gen \
+  && locale-gen
 
 RUN curl -sSL https://raw.githubusercontent.com/pimalaya/himalaya/master/install.sh | PREFIX=/usr/local sh
 
 # 2. 插件安装（作为 node 用户以避免后期权限修复带来的镜像膨胀）
-RUN mkdir -p /data/.openclaw/workspace /data/.openclaw/extensions /data/.openclaw/agents /data/.openclaw/credentials && \
-  chown -R node:node /data && \
-  chown -R node:node /usr/local/lib/node_modules && \
-  chown -R node:node /usr/local/bin
+RUN mkdir -p /data/.openclaw/workspace /data/.openclaw/extensions /data/.openclaw/agents /data/.openclaw/credentials
 
 # 暴露端口
 EXPOSE 3000
@@ -51,13 +48,12 @@ COPY openclaw.json /app/openclaw.json
 COPY .env /app/.env
 
 RUN chmod 600 /app/openclaw.json && \
-  chown -R node:node /app && \
   echo "=== openclaw.json content ===" && \
   cat /app/openclaw.json && \
   echo "=== .env content ===" && \
   cat /app/.env
 
-USER node
+USER root
 
 RUN npm install -g openclaw@latest && \
   npm install -g @clawhub/cli && \
