@@ -16,6 +16,7 @@ primary_region = "nrt" # change to your closest region
 dockerfile = "Dockerfile"
 
 [env]
+OPENCLAW_CONFIG_RELOAD = "false"
 NODE_ENV = "production"
 OPENCLAW_PREFER_PNPM = "1"
 OPENCLAW_STATE_DIR = "/data/.openclaw"

@@ -12,10 +12,27 @@
                     "alias": "OpenRouter"
                 },
                 "openrouter/nvidia/nemotron-3-super-120b-a12b:free": {},
-                "huggingface-infer/Qwen/Qwen-VL-Chat": {},
+                "huggingface-infer/Qwen/Qwen-VL-Chat": {
+                    "alias": "Qwen-VL-Chat"
+                },
                 "huggingface-infer/BAAI/bge-small-zh-v1.5": {}
             },
             "workspace": "${OPENCLAW_HOME}/workspace"
+        }
+    },
+    "models": {
+        "providers": {
+            "huggingface-infer": {
+                "baseUrl": "https://api-inference.huggingface.co/models",
+                "apiKey": "${HUGGINGFACE_HUB_TOKEN}",
+                "models": [
+                    {
+                        "id": "Qwen/Qwen-VL-Chat",
+                        "name": "Qwen-VL-Chat",
+                        "input": ["text", "image"]
+                    }
+                ]
+            }
         }
     },
     "tools": {
