@@ -1,88 +1,79 @@
 {
-  "agents": {
-    "defaults": {
-      "model": {
-        "primary": "openrouter/nvidia/nemotron-3-super-120b-a12b:free"
-      },
-      "models": {
-        "openrouter/auto": {
-          "alias": "OpenRouter"
+    "agents": {
+        "defaults": {
+            "model": {
+                "primary": "openrouter/nvidia/nemotron-3-super-120b-a12b:free"
+            },
+            "imageModel": {
+                "primary": "huggingface-infer/Qwen/Qwen-VL-Chat"
+            },
+            "models": {
+                "openrouter/auto": {
+                    "alias": "OpenRouter"
+                },
+                "openrouter/nvidia/nemotron-3-super-120b-a12b:free": {}
+            },
+            "workspace": "${OPENCLAW_HOME}/workspace"
+        }
+    },
+    "tools": {
+        "web": {
+            "search": {
+                "provider": "gemini"
+            }
         },
-        "openrouter/nvidia/nemotron-3-super-120b-a12b:free": {}
-      },
-      "workspace": "${OPENCLAW_HOME}/workspace"
-    }
-  },
-  "tools": {
-    "web": {
-      "search": {
-        "provider": "gemini"
-      }
+        "allow": ["group:automation", "exec", "group:fs", "web_search", "web_fetch"],
+        "deny": ["browser"]
     },
-    "allow": [
-      "group:automation",
-      "exec",
-      "group:fs",
-      "web_search",
-      "web_fetch"
-    ],
-    "deny": [
-      "browser"
-    ]
-  },
-  "commands": {
-    "native": "auto",
-    "nativeSkills": "auto",
-    "restart": true,
-    "ownerDisplay": "raw"
-  },
-  "session": {
-    "dmScope": "per-channel-peer"
-  },
-  "channels": {
-    "feishu": {
-      "enabled": true,
-      "appId": "${FEISHU_APP_ID}",
-      "appSecret": "${FEISHU_APP_SECRET}",
-      "connectionMode": "websocket",
-      "domain": "lark",
-      "groupPolicy": "disabled"
-    }
-  },
-  "gateway": {
-    "port": 3000,
-    "mode": "local",
-    "bind": "lan",
-    "controlUi": {
-      "allowedOrigins": [
-        "https://cyeamclaw.fly.dev"
-      ],
-      "dangerouslyAllowHostHeaderOriginFallback": true
+    "commands": {
+        "native": "auto",
+        "nativeSkills": "auto",
+        "restart": true,
+        "ownerDisplay": "raw"
     },
-    "auth": {
-      "mode": "token",
-      "token": "${OPENCLAW_GATEWAY_TOKEN}"
+    "session": {
+        "dmScope": "per-channel-peer"
     },
-    "tailscale": {
-      "mode": "off",
-      "resetOnExit": false
+    "channels": {
+        "feishu": {
+            "enabled": true,
+            "appId": "${FEISHU_APP_ID}",
+            "appSecret": "${FEISHU_APP_SECRET}",
+            "connectionMode": "websocket",
+            "domain": "lark",
+            "groupPolicy": "disabled"
+        }
+    },
+    "gateway": {
+        "port": 3000,
+        "mode": "local",
+        "bind": "lan",
+        "controlUi": {
+            "allowedOrigins": ["https://cyeamclaw.fly.dev"],
+            "dangerouslyAllowHostHeaderOriginFallback": true
+        },
+        "auth": {
+            "mode": "token",
+            "token": "${OPENCLAW_GATEWAY_TOKEN}"
+        },
+        "tailscale": {
+            "mode": "off",
+            "resetOnExit": false
+        }
+    },
+    "plugins": {
+        "entries": {
+            "feishu": {
+                "enabled": true
+            }
+        }
+    },
+    "logging": {
+        "level": "debug",
+        "consoleLevel": "debug",
+        "consoleStyle": "pretty",
+        "file": "/data/logs/openclaw-YYYY-MM-DD.log",
+        "redactSensitive": "tools",
+        "redactPatterns": ["sk-.*"]
     }
-  },
-  "plugins": {
-    "entries": {
-      "feishu": {
-        "enabled": true
-      }
-    }
-  },
-  "logging": {
-    "level": "debug",
-    "consoleLevel": "debug",
-    "consoleStyle": "pretty",
-    "file": "/data/logs/openclaw-YYYY-MM-DD.log",
-    "redactSensitive": "tools",
-    "redactPatterns": [
-      "sk-.*"
-    ]
-  }
 }
