@@ -2,34 +2,61 @@
     "agents": {
         "defaults": {
             "model": {
-                "primary": "openrouter/nvidia/nemotron-3-super-120b-a12b:free"
+                "primary": "openrouter/nvidia/nemotron-3-super-120b-a12b:free",
+                "fallbacks": ["openrouter/nvidia/llama-nemotron-embed-vl-1b-v2:free", "huggingface/deepseek-ai/DeepSeek-R1"]
             },
             "imageModel": {
-                "primary": "huggingface-infer/Qwen/Qwen-VL-Chat"
+                "primary": "openrouter/nvidia/nemotron-nano-12b-v2-vl:free",
+                "fallbacks": ["openrouter/nvidia/llama-nemotron-embed-vl-1b-v2:free", "huggingface-infer/Qwen/Qwen-VL-Chat"]
             },
             "models": {
-                "openrouter/auto": {
-                    "alias": "OpenRouter"
-                },
                 "openrouter/nvidia/nemotron-3-super-120b-a12b:free": {},
                 "huggingface-infer/Qwen/Qwen-VL-Chat": {
                     "alias": "Qwen-VL-Chat"
                 },
                 "huggingface-infer/BAAI/bge-small-zh-v1.5": {}
             },
-            "workspace": "${OPENCLAW_HOME}/workspace"
+            "memorySearch": {
+                "enabled": true,
+                "provider": "openrouter",
+                "model": "openrouter/nvidia/llama-nemotron-embed-vl-1b-v2:free"
+            },
+            "workspace": "${OPENCLAW_HOME}/workspace",
+            "heartbeat": {
+                "every": "30m"
+            }
         }
     },
     "models": {
         "providers": {
             "huggingface-infer": {
                 "baseUrl": "https://api-inference.huggingface.co/models",
+                "api": "openai-completions",
                 "apiKey": "${HUGGINGFACE_HUB_TOKEN}",
                 "models": [
                     {
                         "id": "Qwen/Qwen-VL-Chat",
                         "name": "Qwen-VL-Chat",
+                        "input": ["image"]
+                    }
+                ]
+            },
+            "openrouter": {
+                "baseUrl": "https://openrouter.ai/api/v1",
+                "apiKey": "${OPENROUTER_API_KEY}",
+                "models": [
+                    {
+                        "id": "nvidia/nemotron-3-super-120b-a12b:free",
+                        "name": "Nemotron-3 Super 120B",
                         "input": ["text", "image"]
+                    },
+                    {
+                        "id": "nvidia/nemotron-nano-12b-v2-vl:free",
+                        "name": "LLama-Nemotron EmbedEmbedding"
+                    },
+                    {
+                        "id": "nvidia/llama-nemotron-embed-vl-1b-v2:free",
+                        "name": "Nvidia-Llamaamaemotron EmbedEmbedding"
                     }
                 ]
             }
@@ -91,7 +118,6 @@
         "level": "debug",
         "consoleLevel": "debug",
         "consoleStyle": "pretty",
-        "file": "/data/logs/openclaw-YYYY-MM-DD.log",
         "redactSensitive": "tools",
         "redactPatterns": ["sk-.*"]
     }
