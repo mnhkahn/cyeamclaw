@@ -27,7 +27,7 @@ MCPORTER_CONFIG = "/data/mcp.json"
 HIMALAYA_CONFIG = "/data/emails/config.toml"
 
 [processes]
-app = "bash -c \"echo '=== Environment Variables ===' && env && echo '=== PATH ===' && echo $PATH && echo '=== OPENCLAW_CONFIG_PATH ===' && echo $OPENCLAW_CONFIG_PATH && cp /app/openclaw.json /data/.openclaw/openclaw.json && cp /app/.env /data/.openclaw/.env && chmod 600 /data/.openclaw/openclaw.json && echo '=== openclaw.json content ===' && cat /data/.openclaw/openclaw.json && openclaw gateway --allow-unconfigured --verbose --port 3000 --bind lan\""
+app = "bash -c \"echo '=== Environment Variables ===' && env && echo '=== PATH ===' && echo $PATH && echo '=== OPENCLAW_CONFIG_PATH ===' && echo $OPENCLAW_CONFIG_PATH && mkdir -p /data/.openclaw && chown -R node:node /data && /app/start-services.sh\""
 
 # NOTE: No [http_service] block = no public ingress allocated.
 # The gateway will only be accessible via:

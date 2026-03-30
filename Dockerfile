@@ -46,6 +46,8 @@ EXPOSE 3000
 WORKDIR /app
 COPY openclaw.json /app/openclaw.json
 COPY .env /app/.env
+COPY start-services.sh /app/start-services.sh
+RUN chmod +x /app/start-services.sh
 
 RUN chmod 600 /app/openclaw.json && \
   echo "=== openclaw.json content ===" && \

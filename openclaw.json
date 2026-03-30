@@ -11,10 +11,10 @@
             },
             "models": {
                 "openrouter/nvidia/nemotron-3-super-120b-a12b:free": {},
-                "huggingface-infer/Qwen/Qwen-VL-Chat": {
-                    "alias": "Qwen-VL-Chat"
-                },
-                "huggingface-infer/BAAI/bge-small-zh-v1.5": {}
+                "openrouter/nvidia/nemotron-nano-12b-v2-vl:free": {},
+                "huggingface/deepseek-ai/DeepSeek-R1": {},
+                "huggingface-infer/Qwen/Qwen-VL-Chat": {},
+                "openrouter/nvidia/llama-nemotron-embed-vl-1b-v2:free": {}
             },
             "memorySearch": {
                 "enabled": true,
@@ -23,7 +23,8 @@
             },
             "workspace": "${OPENCLAW_HOME}/workspace",
             "heartbeat": {
-                "every": "30m"
+                "every": "30m",
+                "target": "feishu"
             }
         }
     },
@@ -48,11 +49,12 @@
                     {
                         "id": "nvidia/nemotron-3-super-120b-a12b:free",
                         "name": "Nemotron-3 Super 120B",
-                        "input": ["text", "image"]
+                        "input": ["text"]
                     },
                     {
                         "id": "nvidia/nemotron-nano-12b-v2-vl:free",
-                        "name": "LLama-Nemotron EmbedEmbedding"
+                        "name": "LLama-Nemotron EmbedEmbedding",
+                        "input": ["text", "image"]
                     },
                     {
                         "id": "nvidia/llama-nemotron-embed-vl-1b-v2:free",
