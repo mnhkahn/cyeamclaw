@@ -24,7 +24,7 @@
             "workspace": "${OPENCLAW_HOME}/workspace",
             "heartbeat": {
                 "every": "30m",
-                "target": "feishu"
+                "target": "last"
             }
         }
     },
