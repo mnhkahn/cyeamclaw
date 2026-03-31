@@ -24,7 +24,8 @@
             "workspace": "${OPENCLAW_HOME}/workspace",
             "heartbeat": {
                 "every": "30m",
-                "target": "last"
+                "target": "feishu",
+                "to": "chat:${FEISHU_CHAT_ID}" 
             }
         }
     },
