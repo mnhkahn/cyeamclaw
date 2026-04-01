@@ -46,6 +46,7 @@ EXPOSE 3000
 WORKDIR /app
 COPY openclaw.json /app/openclaw.json
 COPY .env /app/.env
+COPY exec-approvals.json /app/exec-approvals.json
 COPY start-services.sh /app/start-services.sh
 RUN chmod +x /app/start-services.sh
 
