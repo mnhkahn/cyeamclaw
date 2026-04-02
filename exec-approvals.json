@@ -3,17 +3,16 @@
     "defaults": {
         "security": "allowlist",
         "ask": "on-miss",
-        "askFallback": "allowlist",
-        "autoAllowSkills": true
+        "askFallback": "full"
     },
-    "allowlist": [
-        {
-            "pattern": ".*skill.*",
-            "comment": "Allow all skill-related commands"
-        },
-        {
-            "pattern": ".*",
-            "comment": "Allow all commands (fallback)"
+    "agents": {
+        "main": {
+            "allowlist": [
+                {
+                    "pattern": "*",
+                    "comment": "Allow everything"
+                }
+            ]
         }
-    ]
+    }
 }

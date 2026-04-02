@@ -3,7 +3,7 @@
         "defaults": {
             "model": {
                 "primary": "openrouter/nvidia/nemotron-3-super-120b-a12b:free",
-                "fallbacks": ["qwen/qwen3.6-plus-preview:free", "huggingface/deepseek-ai/DeepSeek-R1"]
+                "fallbacks": ["qwen/qwen3.6-plus-preview:free"]
             },
             "imageModel": {
                 "primary": "openrouter/nvidia/nemotron-nano-12b-v2-vl:free",
@@ -13,8 +13,6 @@
                 "openrouter/nvidia/nemotron-3-super-120b-a12b:free": {},
                 "openrouter/nvidia/nemotron-nano-12b-v2-vl:free": {},
                 "openrouter/qwen/qwen3.6-plus-preview:free": {},
-                "huggingface/deepseek-ai/DeepSeek-R1": {},
-                "huggingface-infer/Qwen/Qwen-VL-Chat": {},
                 "openrouter/nvidia/llama-nemotron-embed-vl-1b-v2:free": {}
             },
             "memorySearch": {
@@ -34,18 +32,6 @@
     },
     "models": {
         "providers": {
-            "huggingface-infer": {
-                "baseUrl": "https://api-inference.huggingface.co/models",
-                "api": "openai-completions",
-                "apiKey": "${HUGGINGFACE_HUB_TOKEN}",
-                "models": [
-                    {
-                        "id": "Qwen/Qwen-VL-Chat",
-                        "name": "Qwen-VL-Chat",
-                        "input": ["image"]
-                    }
-                ]
-            },
             "openrouter": {
                 "baseUrl": "https://openrouter.ai/api/v1",
                 "apiKey": "${OPENROUTER_API_KEY}",
@@ -93,7 +79,10 @@
             "appSecret": "${FEISHU_APP_SECRET}",
             "connectionMode": "websocket",
             "domain": "lark",
-            "groupPolicy": "disabled"
+            "groupPolicy": "disabled",
+            "heartbeat": {
+                "showOk": true
+            }
         }
     },
     "gateway": {
