@@ -5,5 +5,15 @@
         "ask": "on-miss",
         "askFallback": "allowlist",
         "autoAllowSkills": true
-    }
+    },
+    "allowlist": [
+        {
+            "pattern": ".*skill.*",
+            "comment": "Allow all skill-related commands"
+        },
+        {
+            "pattern": ".*",
+            "comment": "Allow all commands (fallback)"
+        }
+    ]
 }

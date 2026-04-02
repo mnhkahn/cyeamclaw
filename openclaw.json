@@ -3,20 +3,13 @@
         "defaults": {
             "model": {
                 "primary": "openrouter/nvidia/nemotron-3-super-120b-a12b:free",
-                "fallbacks": [
-                    "qwen/qwen3.6-plus-preview:free",
-                    "huggingface/deepseek-ai/DeepSeek-R1"
-                ]
+                "fallbacks": ["qwen/qwen3.6-plus-preview:free", "huggingface/deepseek-ai/DeepSeek-R1"]
             },
             "imageModel": {
                 "primary": "openrouter/nvidia/nemotron-nano-12b-v2-vl:free",
-                "fallbacks": [
-                    "openrouter/nvidia/llama-nemotron-embed-vl-1b-v2:free",
-                    "huggingface-infer/Qwen/Qwen-VL-Chat"
-                ]
+                "fallbacks": ["openrouter/nvidia/llama-nemotron-embed-vl-1b-v2:free", "huggingface-infer/Qwen/Qwen-VL-Chat"]
             },
             "models": {
-                "openrouter/minimax/minimax-m2.5:free": {},
                 "openrouter/nvidia/nemotron-3-super-120b-a12b:free": {},
                 "openrouter/nvidia/nemotron-nano-12b-v2-vl:free": {},
                 "openrouter/qwen/qwen3.6-plus-preview:free": {},
@@ -32,7 +25,7 @@
             "workspace": "${OPENCLAW_HOME}/workspace",
             "heartbeat": {
                 "every": "120m",
-                "model": "openrouter/nvidia/nemotron-nano-12b-v2-vl:free",
+                "model": "openrouter/qwen/qwen3.6-plus-preview:free",
                 "ackMaxChars": 0,
                 "target": "feishu",
                 "to": "${FEISHU_CHAT_ID}"
@@ -49,9 +42,7 @@
                     {
                         "id": "Qwen/Qwen-VL-Chat",
                         "name": "Qwen-VL-Chat",
-                        "input": [
-                            "image"
-                        ]
+                        "input": ["image"]
                     }
                 ]
             },
@@ -60,26 +51,14 @@
                 "apiKey": "${OPENROUTER_API_KEY}",
                 "models": [
                     {
-                        "id": "minimax/minimax-m2.5:free",
-                        "name": "Minimax M2.5",
-                        "input": [
-                            "text"
-                        ]
-                    },
-                    {
                         "id": "qwen/qwen3.6-plus-preview:free",
                         "name": "Qwen 3.6 Plus Preview",
-                        "input": [
-                            "text"
-                        ]
+                        "input": ["text"]
                     },
                     {
                         "id": "nvidia/nemotron-nano-12b-v2-vl:free",
                         "name": "LLama-Nemotron EmbedEmbedding",
-                        "input": [
-                            "text",
-                            "image"
-                        ]
+                        "input": ["text", "image"]
                     },
                     {
                         "id": "nvidia/llama-nemotron-embed-vl-1b-v2:free",
@@ -95,16 +74,8 @@
                 "provider": "gemini"
             }
         },
-        "allow": [
-            "group:automation",
-            "exec",
-            "group:fs",
-            "web_search",
-            "web_fetch"
-        ],
-        "deny": [
-            "browser"
-        ]
+        "allow": ["group:automation", "exec", "group:fs", "web_search", "web_fetch"],
+        "deny": ["browser"]
     },
     "commands": {
         "native": "auto",
@@ -130,9 +101,7 @@
         "mode": "local",
         "bind": "lan",
         "controlUi": {
-            "allowedOrigins": [
-                "https://cyeamclaw.fly.dev"
-            ],
+            "allowedOrigins": ["https://cyeamclaw.fly.dev"],
             "dangerouslyAllowHostHeaderOriginFallback": true
         },
         "auth": {
@@ -156,8 +125,6 @@
         "consoleLevel": "debug",
         "consoleStyle": "pretty",
         "redactSensitive": "tools",
-        "redactPatterns": [
-            "sk-.*"
-        ]
+        "redactPatterns": ["sk-.*"]
     }
 }
