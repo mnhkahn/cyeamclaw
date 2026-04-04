@@ -2,8 +2,8 @@
     "agents": {
         "defaults": {
             "model": {
-                "primary": "openrouter/nvidia/nemotron-3-super-120b-a12b:free",
-                "fallbacks": ["qwen/qwen3.6-plus-preview:free"]
+                "primary": "siliconflow/tencent/Hunyuan-MT-7B",
+                "fallbacks": ["openrouter/nvidia/nemotron-3-super-120b-a12b:free"]
             },
             "imageModel": {
                 "primary": "openrouter/nvidia/nemotron-nano-12b-v2-vl:free",
@@ -59,6 +59,17 @@
                     {
                         "id": "nvidia/llama-nemotron-embed-vl-1b-v2:free",
                         "name": "Nvidia-Llamaamaemotron EmbedEmbedding"
+                    }
+                ]
+            },
+            "siliconflow": {
+                "baseUrl": "https://api.siliconflow.cn/v1",
+                "apiKey": "${SILICONFLOW_API_KEY}",
+                "models": [
+                    {
+                        "id": "tencent/Hunyuan-MT-7B",
+                        "name": "Hunyuan MT 7B",
+                        "input": ["text"]
                     }
                 ]
             }
