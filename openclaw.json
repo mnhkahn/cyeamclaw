@@ -13,6 +13,7 @@
                 "openrouter/nvidia/nemotron-3-super-120b-a12b:free": {},
                 "openrouter/nvidia/nemotron-nano-12b-v2-vl:free": {},
                 "openrouter/qwen/qwen3.6-plus-preview:free": {},
+                "stepfun/step-3.5-flash:free": {},
                 "openrouter/nvidia/llama-nemotron-embed-vl-1b-v2:free": {}
             },
             "memorySearch": {
@@ -23,7 +24,7 @@
             "workspace": "${OPENCLAW_HOME}/workspace",
             "heartbeat": {
                 "every": "120m",
-                "model": "openrouter/qwen/qwen3.6-plus-preview:free",
+                "model": "stepfun/step-3.5-flash:free",
                 "ackMaxChars": 0,
                 "target": "feishu",
                 "to": "${FEISHU_CHAT_ID}"
@@ -45,6 +46,15 @@
                         "id": "nvidia/nemotron-nano-12b-v2-vl:free",
                         "name": "LLama-Nemotron EmbedEmbedding",
                         "input": ["text", "image"]
+                    },
+                    {
+                        "id": "nvidia/llama-nemotron-embed-vl-1b-v2:free",
+                        "name": "Nvidia-Llamaamaemotron EmbedEmbedding"
+                    },
+                    {
+                        "id": "stepfun/step-3.5-flash:free",
+                        "name": "StepFun 3.5 Flash",
+                        "input": ["text"]
                     },
                     {
                         "id": "nvidia/llama-nemotron-embed-vl-1b-v2:free",
