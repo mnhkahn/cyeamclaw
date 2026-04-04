@@ -30,9 +30,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   procps \
   unzip \
   vim \
+  python3 \
+  python3-pip \
+  python3-venv \
+  python3-dev \
   && rm -rf /var/lib/apt/lists/* \
   && sed -i 's/# zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/' /etc/locale.gen \
-  && locale-gen
+  && locale-gen \
+  && ln -s /usr/bin/python3 /usr/bin/python
 
 RUN curl -sSL https://raw.githubusercontent.com/pimalaya/himalaya/master/install.sh | PREFIX=/usr/local sh
 
